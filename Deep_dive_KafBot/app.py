@@ -9,6 +9,7 @@ app = Flask(__name__)
 @app.route('/', methods=["POST"])
 def post_data():
     data = request.get_json()
+    api.timer(data)
     if data.get('message_type') is not None:
         message_type = data.get('message_type')
         # 群聊消息

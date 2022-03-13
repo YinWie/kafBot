@@ -1,7 +1,11 @@
+import threading
+import time
+
 import requests
 import config
 from funPack.CountdownLive import liveDay
 from funPack.repeat import reSay
+from funPack.timer import hello_time
 
 
 # 发送群消息
@@ -30,13 +34,20 @@ def receiveGroupMessage(data):
         liveDay(gid, uid, word)  # 倒计时功能
     if isWatchGroup(gid):
         reSay(gid, uid, word)  # 复读姬功能
+
     if str(gid) in '799086549':
         liveDay(gid, uid, word)
+
         # reSay(gid, uid, word)
 
     print(gid, uid, word)
 
     # print('\n\n\n', data)
+
+
+#  定时播报
+def timer(data):
+    hello_time('769411708')
 
 
 # 收取私人消息
