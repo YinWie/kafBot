@@ -1,11 +1,9 @@
-import threading
-import time
-
 import requests
 import config
 from funPack.CountdownLive import liveDay
 from funPack.repeat import reSay
 from funPack.timer import hello_time
+from funPack.song import music, mu_list
 
 
 # 发送群消息
@@ -33,11 +31,13 @@ def receiveGroupMessage(data):
     if isWatchGroup(gid) and callKafBot(word):  # 艾特功能
         liveDay(gid, uid, word)  # 倒计时功能
     if isWatchGroup(gid):
+        mu_list(gid, word)  # 歌单
         reSay(gid, uid, word)  # 复读姬功能
-
+        if "来首" in word:  # 来首音乐
+            music(gid, word)
     if str(gid) in '799086549':
         liveDay(gid, uid, word)
-
+        music(gid, word)
         # reSay(gid, uid, word)
 
     print(gid, uid, word)
@@ -47,7 +47,7 @@ def receiveGroupMessage(data):
 
 #  定时播报
 def timer(data):
-    hello_time('769411708')
+    hello_time('769411708')  # 早上好特定群发送图片和内容
 
 
 # 收取私人消息

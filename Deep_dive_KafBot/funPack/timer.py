@@ -43,6 +43,8 @@ def hello_time(gid):
     if now_time_h == config.getTime("hello")[0] and now_time_m == config.getTime("hello")[1] and cont == True:
         sendGroupMessage(gid, '[CQ:image,file=guild-images/hello.jpg]'.format())  # 发送早安图片
         time.sleep(1)  # 休眠防止文字冲突
+        sendGroupMessage(gid, '[CQ:record,file=hello.mp3]')
+        time.sleep(1)
         live_day(gid)  # live提醒
 
         cont = False

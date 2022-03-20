@@ -28,6 +28,10 @@ def post_data():
 
     return 'OK'
 
+# @app.mp3('/')
+# def music():
+#
+
 
 if __name__ == '__main__':
     app.run(debug=True,
