@@ -1,3 +1,6 @@
+"""
+hello早上好模块
+"""
 import config
 import requests
 import time

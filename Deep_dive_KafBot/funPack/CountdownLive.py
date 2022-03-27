@@ -1,3 +1,6 @@
+"""
+演唱会倒计时模块
+"""
 from datetime import datetime
 import config
 import requests

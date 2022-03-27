@@ -1,3 +1,6 @@
+"""
+唱歌模块
+"""
 import config
 import requests
 
@@ -17,4 +20,4 @@ def music(gid, word):  # 语音播放音乐模块
 
 def mu_list(gid,word):
     if ".歌单" in "".join(word):
-        sendGroupMessage(gid, "现收录歌曲:"+"、".join(config.music_group_dict.keys())+"\n“注:来首+歌名即可点歌”")
+        sendGroupMessage(gid, "现收录歌曲:"+"、".join(config.music_group_dict.keys())+"\n“注:来首'歌名'即可点歌”")

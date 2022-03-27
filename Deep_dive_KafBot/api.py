@@ -4,6 +4,7 @@ from funPack.CountdownLive import liveDay
 from funPack.repeat import reSay
 from funPack.timer import hello_time
 from funPack.song import music, mu_list
+from funPack.BanSystem import text, kill_me
 
 
 # 发送群消息
@@ -31,6 +32,10 @@ def receiveGroupMessage(data):
     if isWatchGroup(gid) and callKafBot(word):  # 艾特功能
         liveDay(gid, uid, word)  # 倒计时功能
     if isWatchGroup(gid):
+        if uid not in config.admin:
+            kill_me(gid, uid, word)  # 自己禁言
+        else:
+            text(gid, uid, word)  # 管理员权限送你一分钟口球
         mu_list(gid, word)  # 歌单
         reSay(gid, uid, word)  # 复读姬功能
         if "来首" in word:  # 来首音乐
@@ -38,7 +43,8 @@ def receiveGroupMessage(data):
     if str(gid) in '799086549':
         liveDay(gid, uid, word)
         music(gid, word)
-        # reSay(gid, uid, word)
+        kill_me(gid, uid, word)
+        text(gid, uid, word)
 
     print(gid, uid, word)
 

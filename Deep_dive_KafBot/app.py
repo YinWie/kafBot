@@ -31,8 +31,6 @@ def post_data():
 # @app.mp3('/')
 # def music():
 #
-
-
 if __name__ == '__main__':
     app.run(debug=True,
             host=config.getHost(),
