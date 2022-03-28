@@ -1,4 +1,4 @@
-"""禁言模块"""
+"""口球模块"""
 import config
 import requests
 import random
