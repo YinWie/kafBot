@@ -27,7 +27,8 @@ def liveDays(day):
 # live提醒
 def live_day(gid):
     num = len(config.live_group_dict.keys())
-    day = config.live_group_dict[1]
+    days=list(config.live_group_dict.keys())[0]
+    day = config.live_group_dict[days]
     name = str(list(config.live_group_dict.keys())).replace("[", "").replace("]", "").replace("'", "")
     sendGroupMessage(gid, '花谱妈妈的演唱会有{0}个,分别是:{1}'.format(num, name))
     if liveDays(day) > 0:
@@ -49,7 +50,6 @@ def hello_time(gid):
         sendGroupMessage(gid, '[CQ:record,file=hello.mp3]')
         time.sleep(1)
         live_day(gid)  # live提醒
-
         cont = False
     elif now_time_h == config.getTime("hello")[0] and now_time_m == config.getTime("hello")[1] + 1:
         cont = True
