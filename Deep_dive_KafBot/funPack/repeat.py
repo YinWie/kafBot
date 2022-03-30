@@ -36,6 +36,6 @@ def reSay(gid, uid, word):  # 是否发过检测
     data = count(word, uid)
     global old_word
     # print(old_word, data)
-    if old_word != data and data != 0 :
+    if old_word != data and data != 0 and data != None:
         sendGroupMessage(gid, word.format())
         old_word = data
