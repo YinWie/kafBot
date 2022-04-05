@@ -31,10 +31,10 @@ def num(word):
 
 def text(gid, uid, word):
     # ban_id = num(word)
-    if "口他" in word :
+    if "口他" in word:
         ban_id = re.compile(r"qq=(.*?)]").findall(word)[0]
         if ban_id not in config.admin:
-            ban(gid, ban_id, 1*60)
+            ban(gid, ban_id, 1 * 60)
 
 
 def kill_me(gid, uid, word):
@@ -44,6 +44,7 @@ def kill_me(gid, uid, word):
     word = word.replace("壹", '1').replace("俩", '2').replace("两", '2').replace("叁", '3').replace("千", '000')
     word = word.replace("肆", '4').replace("伍", '5').replace("陆", '6').replace("柒", '7').replace("百", '00')
     word = word.replace("捌", '8').replace("玖", '9').replace("个", "").replace("拾", '10').replace("佰", '00')
+    word = word.replace('[CQ:at,qq=3182560165]', '花宝').replace(" ", "")
     if "口我" in word and "月" in word:
         ban_t = int(re.compile(r"口我(.*?)月").findall(word)[0])
         if ban_t == 1:
@@ -60,6 +61,11 @@ def kill_me(gid, uid, word):
             ban(gid, uid, 2588400)
             time.sleep(0.1)
             sendGroupMessage(gid, '[CQ:at,qq={0}]不支持口一个月以上,先给你加满'.format(uid))
+        elif ban_t == 0:
+            ban(gid, uid, 1 * 60 * 60)
+            time.sleep(0.1)
+            sendGroupMessage(gid, '[CQ:at,qq={0}]想卡我bug,给我休息一小时反省下'.format(uid, ban_t))
+
         else:
             ban(gid, uid, ban_t * 60 * 60 * 24)
             time.sleep(0.1)
@@ -70,6 +76,10 @@ def kill_me(gid, uid, word):
             ban(gid, uid, 2588400)
             time.sleep(0.1)
             sendGroupMessage(gid, '[CQ:at,qq={0}]不支持口一个月以上,先给你加满'.format(uid))
+        elif ban_t == 0:
+            ban(gid, uid, 1 * 60 * 60)
+            time.sleep(0.1)
+            sendGroupMessage(gid, '[CQ:at,qq={0}]想卡我bug,给我休息1小时反省下'.format(uid, ban_t))
         else:
             ban(gid, uid, ban_t * 60 * 60)
             time.sleep(0.1)
@@ -80,6 +90,10 @@ def kill_me(gid, uid, word):
             ban(gid, uid, 2588400)
             time.sleep(0.1)
             sendGroupMessage(gid, '[CQ:at,qq={0}]不支持口一个月以上,先给你加满'.format(uid))
+        elif ban_t == 0:
+            ban(gid, uid, 3 * 60 * 60)
+            time.sleep(0.1)
+            sendGroupMessage(gid, '[CQ:at,qq={0}]想卡我bug,给我休息3分钟反省下'.format(uid, ban_t))
         else:
             ban(gid, uid, ban_t * 60)
             time.sleep(0.1)
@@ -102,3 +116,9 @@ def kill_me(gid, uid, word):
         ban(gid, uid, 3 * 60)
         time.sleep(0.1)
         sendGroupMessage(gid, '[CQ:at,qq={0}]我不认识,先送你三分钟,好好组织语言在来领取口球'.format(uid))
+    elif "bot爬" in word or "花宝爬" in word:
+        ban(gid, uid, 60 * 60)
+        time.sleep(0.1)
+        sendGroupMessage(gid, '[CQ:at,qq={0}]你先爬1小时'.format(uid))
+
+# __all__ = ['text', 'kill_me']
